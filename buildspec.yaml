@@ -17,26 +17,26 @@ phases:
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $REPOSITORY_URI
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
-      - echo Repository URI: $REPOSITORY_URI
-      - echo Image Tag: $IMAGE_TAG
+      - echo "Repository URI: $REPOSITORY_URI"
+      - echo "Image Tag: $IMAGE_TAG"
 
   build:
     commands:
-      - echo Build started on `date`
-      - echo Building Docker image using OpenJDK from Amazon ECR Public...
+      - echo "Build started on $(date)"
+      - echo "Building Docker image using OpenJDK from Amazon ECR Public..."
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
 
   post_build:
     commands:
-      - echo Build completed on `date`
-      - echo Pushing Docker images to ECR...
+      - echo "Build completed on $(date)"
+      - echo "Pushing Docker images to ECR..."
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-      - echo Writing imagedefinitions.json for deployment...
+      - echo "Writing imagedefinitions.json for deployment..."
       - DOCKER_CONTAINER_NAME=aws-cicd-demo-ns
       - printf '[{"name":"%s","imageUri":"%s"}]' $DOCKER_CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
-      - echo printing imagedefinitions.json
+      - echo "Printing imagedefinitions.json"
       - cat imagedefinitions.json
 
 artifacts:
