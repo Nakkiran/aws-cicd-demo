@@ -11,7 +11,8 @@ phases:
       - echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7
       - echo build-$CODEBUILD_BUILD_ID | awk -F":" '{print $2}'
       - COMMIT_HASH=$CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7
-      - IMAGE_TAG=build-$CODEBUILD_BUILD_ID | awk -F":" '{print $2}'
+      - IMAGE_TAG=$(echo "build-$CODEBUILD_BUILD_ID" | awk -F":" '{print $2}')
+      - echo "IMAGE_TAG=$IMAGE_TAG"
   build:
     commands:
       - echo Build started on `date`
