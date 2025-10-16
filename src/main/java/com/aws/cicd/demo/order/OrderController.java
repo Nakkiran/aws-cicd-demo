@@ -70,7 +70,7 @@ public class OrderController {
 
 	    @GetMapping("/welcome")
 	    public String greetings() {
-	        return "Hello Aara !!!!!!!, AWS CICD Example working fine !";
+	        return "Hello Aara !!!!!!!-1, AWS CICD Example working fine !";
 	    }
 
 
