@@ -67,11 +67,11 @@ public class OrderController {
 //	        return "UP";
 //	    }
 //
-//
-//	    @GetMapping("/welcome")
-//	    public String greetings() {
-//	        return "Hello Techie , AWS CICD Example working fine !";
-//	    }
+
+	    @GetMapping("/welcome")
+	    public String greetings() {
+	        return "Hello NS , AWS CICD Example working fine !";
+	    }
 
 
 	}
