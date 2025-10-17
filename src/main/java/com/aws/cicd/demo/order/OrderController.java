@@ -62,16 +62,16 @@ public class OrderController {
 	        
 	    }
 
-//	    @GetMapping("/health")
-//	    public String healthCheck() {
-//	        return "UP and Running!!!!";
-//	    }
-//
-//
-//	    @GetMapping("/welcome")
-//	    public String greetings() {
-//	        return "Hello Aara !!!!!!!-1, AWS CICD Example working fine !";
-//	    }
+	    @GetMapping("/health")
+	    public String healthCheck() {
+	        return "UP and Runni-------------------ng!!!!";
+	    }
+
+
+	    @GetMapping("/welcome")
+	    public String greetings() {
+	        return "Hello Aara !!!!--------------------!!!-1, AWS CICD Example working fine !";
+	    }
 
 
 	}
